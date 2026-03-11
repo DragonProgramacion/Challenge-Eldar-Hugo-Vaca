@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -72,5 +73,17 @@ public class TransactionServiceImp implements TransactionService {
 
         return balance;
     }
-}
 
+    @Override
+    public int saveBatch(List<Transaction> transactions, UUID processingId) {
+        int errors = 0;
+        for (Transaction transaction : transactions) {
+            try {
+                saveTransaction(transaction, processingId);
+            } catch (IllegalArgumentException e) {
+                errors++;
+            }
+        }
+        return errors;
+    }
+}

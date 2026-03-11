@@ -13,9 +13,8 @@ import java.util.UUID;
 @Entity
 @Table(name = "transactions",
        indexes = {
-               @Index(name = "idx_transaction_id", columnList = "transactionId"),
-               @Index(name = "idx_account_id", columnList = "accountId"),
-               @Index(name = "idx_account_type", columnList = "accountId,type")
+               @Index(name = "idx_processing_id", columnList = "processingId"),
+               @Index(name = "idx_account_id", columnList = "accountId")
        }
 )
 @Getter @Setter
@@ -31,7 +30,7 @@ public class Transaction {
     @Column(nullable = false)
     private String accountId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 19, scale = 4)
     private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)

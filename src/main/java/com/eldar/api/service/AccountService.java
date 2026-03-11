@@ -8,5 +8,5 @@ import java.util.List;
 public interface AccountService {
     BigDecimal getBalanceByAccountId(String accountId);
 
-    List<TopAccountsResponse> getTopAccounts();
+    List<TopAccountsResponse> getTopAccounts(int limit);
 }

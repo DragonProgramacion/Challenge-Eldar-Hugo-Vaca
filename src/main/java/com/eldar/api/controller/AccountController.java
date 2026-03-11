@@ -9,10 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -33,12 +30,12 @@ public class AccountController {
             @ApiResponse(responseCode = "404", description = "Account not found")
     })
     @GetMapping("/{accountId}/balance")
-    public BigDecimal getBalanceByAccountId(
+    public ResponseEntity<BigDecimal> getBalanceByAccountId(
             @Parameter(description = "Account identifier", example = "acc1")
             @PathVariable String accountId) {
         BigDecimal balance = accountService.getBalanceByAccountId(accountId);
 
-        return ResponseEntity.ok(balance).getBody();
+        return ResponseEntity.ok(balance);
     }
 
     @Operation(
@@ -49,9 +46,9 @@ public class AccountController {
             @ApiResponse(responseCode = "200", description = "Top accounts retrieved successfully")
     })
     @GetMapping("/top-accounts")
-    public List<TopAccountsResponse> getTopAccounts() {
-        List<TopAccountsResponse> response = accountService.getTopAccounts();
+    public ResponseEntity<List<TopAccountsResponse>> getTopAccounts(@RequestParam(defaultValue = "10") int limit) {
+        List<TopAccountsResponse> response = accountService.getTopAccounts(limit);
 
-        return ResponseEntity.ok(response).getBody();
+        return ResponseEntity.ok(response);
     }
 }

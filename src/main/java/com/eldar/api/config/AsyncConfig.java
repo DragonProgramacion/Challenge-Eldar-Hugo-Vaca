@@ -1,5 +1,6 @@
 package com.eldar.api.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -12,13 +13,16 @@ import java.util.concurrent.Executor;
 public class AsyncConfig {
 
     @Bean(name = "csvExecutor")
-    public Executor csvExecutor() {
+    public Executor csvExecutor(
+            @Value("${async.csv.core-pool-size}") int corePoolSize,
+            @Value("${async.csv.max-pool-size}") int maxPoolSize,
+            @Value("${async.csv.queue-capacity}") int queueCapacity) {
 
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 
-        executor.setCorePoolSize(4);
-        executor.setMaxPoolSize(8);
-        executor.setQueueCapacity(50);
+        executor.setCorePoolSize(corePoolSize);
+        executor.setMaxPoolSize(maxPoolSize);
+        executor.setQueueCapacity(queueCapacity);
         executor.setThreadNamePrefix("csv-worker-");
 
         executor.initialize();

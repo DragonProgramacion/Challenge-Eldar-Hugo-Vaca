@@ -43,10 +43,16 @@ public class ProcessingController {
                     required = true,
                     content = @Content(schema = @Schema(type = "string", format = "binary"))
             )
-            @RequestParam("file")MultipartFile file) throws IOException {
-        UUID processingId = processingService.startProcessing(file);
-        ProcessingResponse response = new ProcessingResponse((processingId));
-        return ResponseEntity.ok(response);
+            @RequestParam("file")MultipartFile file) {
+        try {
+            UUID processingId = processingService.startProcessing(file);
+            ProcessingResponse response = new ProcessingResponse((processingId));
+            return ResponseEntity.accepted().body(response);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+        } catch (IOException e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
     @Operation(
