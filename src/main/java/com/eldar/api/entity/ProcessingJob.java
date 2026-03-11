@@ -19,12 +19,16 @@ public class ProcessingJob {
     private UUID id;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private ProcessingStatus status;
-
+    @Column(nullable = false)
     private Integer totalRecords;
+    @Column(nullable = false)
     private Integer processedRecords;
+    @Column(nullable = false)
     private Integer errorRecords;
-
+    @Column(nullable = false)
     private LocalDateTime createdAt;
+
     private LocalDateTime completedAt;
 }
