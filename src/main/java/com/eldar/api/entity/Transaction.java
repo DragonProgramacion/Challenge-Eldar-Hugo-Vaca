@@ -1,7 +1,6 @@
 package com.eldar.api.entity;
 
 import com.eldar.api.enums.TransactionType;
-import com.opencsv.bean.CsvDate;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,10 +11,11 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "transaction",
-       uniqueConstraints = @UniqueConstraint(columnNames = "transactionId"),
+@Table(name = "transactions",
        indexes = {
-            @Index(name = "idx_account_id", columnList = "accountId")
+               @Index(name = "idx_transaction_id", columnList = "transactionId"),
+               @Index(name = "idx_account_id", columnList = "accountId"),
+               @Index(name = "idx_account_type", columnList = "accountId,type")
        }
 )
 @Getter @Setter

@@ -60,6 +60,27 @@ Desde allí es posible probar todos los endpoints directamente.
 
 ---
 
+# Dataset de prueba (CSV)
+
+Se incluyen varios archivos .CSV de prueba para facilitar casos como duplicados o errores de linea.
+
+Los archivos se encuentran en la siguiente ruta:
+
+```
+src/main/resources/dataset
+```
+
+
+# Colección Postman
+
+Se incluye en el proyecto la correspondiente colección de Postmann para realizar las pruebas
+
+La colección se encuentra en la siguiente ruta:
+
+```
+doc/postman
+```
+
 # Endpoints principales
 
 ## Iniciar procesamiento de archivo

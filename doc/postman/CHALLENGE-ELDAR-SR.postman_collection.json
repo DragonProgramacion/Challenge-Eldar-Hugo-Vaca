@@ -1,0 +1,195 @@
+{
+  "info": {
+    "_postman_id": "3395eccb-260e-4561-94b0-4b5ba459a1a0",
+    "name": "CHALLENGE-ELDAR-SR",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19055937"
+  },
+  "item": [
+    {
+      "name": "Actuator",
+      "item": [
+        {
+          "name": "healthcheck",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/actuator",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "actuator"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "process",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "uuid": "428b1958-6b27-4f3d-bc42-a021f1b73296",
+              "src": "/C:/Users/valej/Desktop/valid-invalid-duplicates.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/process",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "process"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "status",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://localhost:8080/process/3a61af11-eef9-4a7a-8766-544793e911e3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "process",
+            "3a61af11-eef9-4a7a-8766-544793e911e3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "balance",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "uuid": "428b1958-6b27-4f3d-bc42-a021f1b73296",
+              "src": "/C:/Users/valej/Desktop/transactions_1M_dataset2.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/accounts/acc5/balance",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "accounts",
+            "acc5",
+            "balance"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "top-accounts",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "uuid": "428b1958-6b27-4f3d-bc42-a021f1b73296",
+              "src": "/C:/Users/valej/Desktop/transactions_1M_dataset2.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/accounts/top-accounts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "accounts",
+            "top-accounts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "isTransactionProcessed",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "uuid": "428b1958-6b27-4f3d-bc42-a021f1b73296",
+              "src": "/C:/Users/valej/Desktop/transactions_1M_dataset2.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/transactions/t2/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "transactions",
+            "t2",
+            "status"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
